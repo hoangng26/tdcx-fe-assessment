@@ -1,17 +1,15 @@
-import styled from "styled-components"
-
-const CustomDiv = styled.div`
-  font-size: 3rem;
-  font-weight: bold;
-  text-decoration: underline;
-  margin-left: auto;
-  margin-right: auto;
-`
+import { Route, Routes } from "react-router";
+import RootLayout from "./components/layouts";
+import HomePageComponent from "./pages/HomePageComponent";
 
 function App() {
   return (
-    <CustomDiv>Hehe</CustomDiv>
-  )
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePageComponent />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
