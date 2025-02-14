@@ -1,11 +1,12 @@
+import useTodo from "@/hooks/useTodo";
 import { Todo } from "@/types";
 import React from "react";
 import TodoItem from "./TodoItem";
 
 type TodoListProps = {
   todos: Todo[];
-  updateTodo: (id: string, updates: Partial<Todo>) => void;
-  deleteTodo: (id: string) => void;
+  updateTodo: ReturnType<typeof useTodo>["updateTodo"];
+  deleteTodo: ReturnType<typeof useTodo>["deleteTodo"];
 };
 
 const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, deleteTodo }) => {
