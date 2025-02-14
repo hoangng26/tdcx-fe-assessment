@@ -1,5 +1,6 @@
 import AddTodoForm from "@/components/Todo/AddTodoForm";
 import TodoList from "@/components/Todo/TodoList";
+import { Button } from "@/components/ui/button";
 import useTodo from "@/hooks/useTodo";
 
 const TodoPage: React.FC = () => {
@@ -7,8 +8,12 @@ const TodoPage: React.FC = () => {
 
   return (
     <div className="mx-auto max-w-2xl p-6">
-      <h1 className="mb-8 text-3xl font-bold">Todo List</h1>
-      <AddTodoForm onAdd={addTodo} />
+      <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Todo List</h1>
+
+        <AddTodoForm onAdd={addTodo} trigger={<Button>Add New</Button>} />
+      </div>
+
       <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
     </div>
   );
