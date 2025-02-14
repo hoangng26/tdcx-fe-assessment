@@ -9,8 +9,8 @@ const CustomDiv = styled.div`
   margin-right: auto;
 `;
 
-const HomePageComponent: React.FC = () => {
+const HomePage: React.FC = () => {
   return <CustomDiv>HomePageComponent</CustomDiv>;
 };
 
-export default HomePageComponent;
+export default HomePage;
