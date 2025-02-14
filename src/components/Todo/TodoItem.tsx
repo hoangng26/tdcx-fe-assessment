@@ -3,17 +3,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import useTodo from "@/hooks/useTodo";
 import { Todo } from "@/types";
+import cx from "classnames";
 import { Edit, Save, Trash2, X } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface TodoItemProps {
   todo: Todo;
-  onUpdate: (id: string, updates: Partial<Todo>) => void;
-  onDelete: (id: string) => void;
+  onUpdate: ReturnType<typeof useTodo>["updateTodo"];
+  onDelete: ReturnType<typeof useTodo>["deleteTodo"];
 }
 
-const TodoItem = ({ todo, onUpdate, onDelete }: TodoItemProps) => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
   const [editedDescription, setEditedDescription] = useState(todo.description || "");
@@ -55,14 +57,25 @@ const TodoItem = ({ todo, onUpdate, onDelete }: TodoItemProps) => {
                   value={editedDescription}
                   onChange={(e) => setEditedDescription(e.target.value)}
                   placeholder="Description (optional)"
-                  className="w-full"
+                  className="w-full resize-none"
                 />
               </div>
             ) : (
               <div>
-                <h3 className={`font-medium ${todo.completed ? "text-gray-500 line-through" : ""}`}>{todo.title}</h3>
+                <h3
+                  className={cx("font-medium", {
+                    "text-gray-500 line-through": todo.completed,
+                  })}
+                >
+                  {todo.title}
+                </h3>
                 {todo.description && (
-                  <p className={`mt-1 text-sm ${todo.completed ? "text-gray-500 line-through" : "text-gray-600"}`}>
+                  <p
+                    className={cx("mt-1 text-sm", {
+                      "text-gray-500 line-through": todo.completed,
+                      "text-gray-600": !todo.completed,
+                    })}
+                  >
                     {todo.description}
                   </p>
                 )}
