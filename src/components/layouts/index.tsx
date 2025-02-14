@@ -65,7 +65,7 @@ const RootLayout: React.FC = () => {
               </li>
 
               <li className="hover:underline">
-                <Link to="/contact">Contact</Link>
+                <Link to="/validation">Form Validation</Link>
               </li>
             </ul>
           </nav>
