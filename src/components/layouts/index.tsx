@@ -3,6 +3,7 @@ import React from "react";
 import { Link, Outlet } from "react-router";
 import styled from "styled-components";
 import { Button } from "../ui/button";
+import { Toaster } from "../ui/toaster";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -56,6 +57,10 @@ const RootLayout: React.FC = () => {
               </li>
 
               <li className="hover:underline">
+                <Link to="/search-filter">Search Filter & Fetch Data</Link>
+              </li>
+
+              <li className="hover:underline">
                 <Link to="/contact">Contact</Link>
               </li>
             </ul>
@@ -70,6 +75,8 @@ const RootLayout: React.FC = () => {
 
       <Main className="!container">
         <Outlet />
+
+        <Toaster />
       </Main>
 
       {/* <footer className="container">Footer</footer> */}
