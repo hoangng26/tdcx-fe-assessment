@@ -19,12 +19,20 @@ class StorageService {
     });
   }
 
-  setItem(key: string, value: string) {
+  setItemAsync(key: string, value: string) {
     return this.fakeAsync(() => localStorage.setItem(key, value));
   }
 
-  getItem(key: string) {
+  getItemAsync(key: string) {
     return this.fakeAsync(() => localStorage.getItem(key));
+  }
+
+  setItem(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
+  getItem(key: string) {
+    return localStorage.getItem(key);
   }
 
   generateRandomUUID() {

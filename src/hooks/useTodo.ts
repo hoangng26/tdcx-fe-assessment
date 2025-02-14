@@ -8,7 +8,7 @@ export default function useTodo() {
 
   const updateTodos = async (data: Todo[]) => {
     setLoading(true);
-    return StorageService.setItem("todos", JSON.stringify(data)).then(() => {
+    return StorageService.setItemAsync("todos", JSON.stringify(data)).then(() => {
       setLoading(false);
       setTodos(data);
     });
@@ -34,7 +34,7 @@ export default function useTodo() {
 
   useEffect(() => {
     setLoading(true);
-    StorageService.getItem("todos").then((data) => {
+    StorageService.getItemAsync("todos").then((data) => {
       setTodos(data ? JSON.parse(<string>data) : []);
       setLoading(false);
     });

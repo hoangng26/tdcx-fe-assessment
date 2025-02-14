@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import RootLayout from "./components/layouts";
 import HomePage from "./pages/Home";
+import SearchFilterPage from "./pages/SearchFilter";
 import TodoPage from "./pages/Todo";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/to-do" element={<TodoPage />} />
+        <Route path="/search-filter" element={<SearchFilterPage />} />
       </Route>
     </Routes>
   );

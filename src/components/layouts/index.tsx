@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router";
 import styled from "styled-components";
 import { Button } from "../ui/button";
 
-const Header = styled.div`
+const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,11 +27,16 @@ const LogoWrapper = styled.span`
   }
 `;
 
+const Main = styled.main`
+  min-height: calc(100vh - 52px);
+  padding: 16px 0;
+`;
+
 const RootLayout: React.FC = () => {
   return (
     <>
-      <header className="container">
-        <Header>
+      <header className="shadow-sm">
+        <HeaderWrapper className="!container">
           <Link to="/">
             <LogoWrapper>
               <img src={ReactIcon} alt="Logo" className="logo" />
@@ -60,12 +65,12 @@ const RootLayout: React.FC = () => {
             <Button variant="ghost">Login</Button>
             <Button>Register</Button>
           </div>
-        </Header>
+        </HeaderWrapper>
       </header>
 
-      <main className="container py-4">
+      <Main className="!container">
         <Outlet />
-      </main>
+      </Main>
 
       {/* <footer className="container">Footer</footer> */}
     </>
