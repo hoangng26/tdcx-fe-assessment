@@ -9,18 +9,19 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 interface AddTodoFormProps {
   onAdd: ReturnType<typeof useTodo>["addTodo"];
   trigger?: React.ReactNode;
+  loading?: boolean;
 }
 
-const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd, trigger }) => {
+const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd, trigger, loading }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim()) {
+      await onAdd(title, description.trim() || undefined);
       setIsOpen(false);
-      onAdd(title, description.trim() || undefined);
       setTitle("");
       setDescription("");
     }
@@ -53,7 +54,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd, trigger }) => {
               className="resize-none"
             />
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" disabled={loading}>
             <Plus className="mr-2 h-4 w-4" /> Add Todo
           </Button>
         </form>
