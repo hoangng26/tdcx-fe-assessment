@@ -28,7 +28,7 @@ const LogoWrapper = styled.span`
   }
 `;
 
-const NavWrapper = styled.nav<{ isOpen: boolean }>`
+const NavWrapper = styled.nav<{ $isOpen: boolean }>`
   @media (max-width: 768px) {
     position: absolute;
     top: 100%;
@@ -37,7 +37,7 @@ const NavWrapper = styled.nav<{ isOpen: boolean }>`
     background: white;
     padding: 1rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+    display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   }
 `;
 
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
           <span />
         </HamburgerButton>
 
-        <NavWrapper isOpen={isMenuOpen}>
+        <NavWrapper $isOpen={isMenuOpen}>
           <NavList>
             <li className="hover:underline">
               <Link to="/">Home</Link>
