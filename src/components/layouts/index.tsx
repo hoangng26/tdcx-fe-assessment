@@ -61,6 +61,10 @@ const RootLayout: React.FC = () => {
               </li>
 
               <li className="hover:underline">
+                <Link to="/counter">Counter</Link>
+              </li>
+
+              <li className="hover:underline">
                 <Link to="/contact">Contact</Link>
               </li>
             </ul>
