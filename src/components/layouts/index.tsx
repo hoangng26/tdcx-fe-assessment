@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router";
 import styled from "styled-components";
 import { Button } from "../ui/button";
 
-const Header = styled.header`
+const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,36 +30,38 @@ const LogoWrapper = styled.span`
 const RootLayout: React.FC = () => {
   return (
     <>
-      <Header className="container">
-        <Link to="/">
-          <LogoWrapper>
-            <img src={ReactIcon} alt="Logo" className="logo" />
+      <header className="container">
+        <Header>
+          <Link to="/">
+            <LogoWrapper>
+              <img src={ReactIcon} alt="Logo" className="logo" />
 
-            <span className="text">React App</span>
-          </LogoWrapper>
-        </Link>
+              <span className="text">React App</span>
+            </LogoWrapper>
+          </Link>
 
-        <nav>
-          <ul className="flex space-x-8">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
+          <nav>
+            <ul className="flex space-x-8">
+              <li className="hover:underline">
+                <Link to="/">Home</Link>
+              </li>
 
-            <li>
-              <Link to="/to-do">To do</Link>
-            </li>
+              <li className="hover:underline">
+                <Link to="/to-do">To do</Link>
+              </li>
 
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
+              <li className="hover:underline">
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <div className="flex space-x-4">
-          <Button variant="ghost">Login</Button>
-          <Button>Register</Button>
-        </div>
-      </Header>
+          <div className="flex space-x-4">
+            <Button variant="ghost">Login</Button>
+            <Button>Register</Button>
+          </div>
+        </Header>
+      </header>
 
       <main className="container py-4">
         <Outlet />

@@ -1,6 +1,6 @@
 class StorageService {
   private static instance: StorageService;
-  private fakeResponseTime = 1000;
+  private fakeResponseTime = 500;
 
   private constructor() {}
 
